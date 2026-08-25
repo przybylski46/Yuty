@@ -45,30 +45,30 @@ module.exports = {
     const ephemeral = interaction.options.getBoolean('ephemeral') ?? false;
     const descripcion = descripciones[Math.floor(Math.random() * descripciones.length)];
     const avatar = usuario.displayAvatarURL({
-      extension: 'webp',
-      size: 1024
+      extension: 'png',
+      size: 2048
     });
     const png = usuario.displayAvatarURL({
       extension: 'png',
-      size: 1024
+      size: 2048
     });
     const jpg = usuario.displayAvatarURL({
       extension: 'jpg',
-      size: 1024
+      size: 2048
     });
     const webp = usuario.displayAvatarURL({
       extension: 'webp',
-      size: 1024
+      size: 2048
     });
     const contenedor = new ContainerBuilder()
     .setAccentColor(8237567)
     .addTextDisplayComponents(
       new TextDisplayBuilder()
-      .setContent('# Avatar de ${usuario.username}')
+      .setContent(`# Avatar de ${usuario.username}`)
       )
     .addTextDisplayComponents(
       new TextDisplayBuilder()
-      .setContent('> ${descripcion}')
+      .setContent(`> ${descripcion}`)
       )
     .addSeparatorComponents(
       new SeparatorBuilder()
