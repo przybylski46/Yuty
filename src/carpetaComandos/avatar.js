@@ -99,7 +99,6 @@ module.exports = {
         )
       );
 
-    const ephemeral = interaction.options.getBoolean('ephemeral') ?? false;
     const flags = ephemeral
       ? 327668 | 64
       : 32768;
