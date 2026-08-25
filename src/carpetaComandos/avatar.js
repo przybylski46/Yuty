@@ -11,16 +11,16 @@ const {
 } = require('discord.js');
 
 const descripciones = [
-  'El rastro termina aquí... 🐾',
-  'El Yutyrannus ha localizado a su presa 🦖',
-  'Una criatura ha sido avistada 👀',
-  'He olfateado el rastro hasta aquí 🦖',
-  'Rawr! ¡Encontré a la criatura! 🦖',
-  'Rawr... Mi instinto encontró este avatar 🦖',
-  'Seguí las huellas hasta encontrar este avatar 🐾',
-  'El Yutyrannus ha encontrado lo que buscabas 🦖',
-  '¡Te tengo! 🦖',
-  'Mira lo que encontré 🦖🤓'
+  '**El rastro termina aquí... 🐾**',
+  '**El Yutyrannus ha localizado a su presa 🦖**',
+  '**Una criatura ha sido avistada 👀**',
+  '**He olfateado el rastro hasta aquí 🦖**',
+  '**Rawr! ¡Encontré a la criatura! 🦖**',
+  '**Rawr... Mi instinto encontró este avatar 🦖**',
+  '**Seguí las huellas hasta encontrar este avatar 🐾**',
+  '**El Yutyrannus ha encontrado lo que buscabas 🦖**',
+  '**¡Te tengo! 🦖**',
+  '**Mira lo que encontré 🦖🤓**'
   ];
 
 module.exports = {
@@ -64,7 +64,7 @@ module.exports = {
     .setAccentColor(8237567)
     .addTextDisplayComponents(
       new TextDisplayBuilder()
-      .setContent(`# Avatar de ${usuario.username}`)
+      .setContent(`## Avatar de ${usuario.username}`)
       )
     .addTextDisplayComponents(
       new TextDisplayBuilder()
@@ -72,7 +72,7 @@ module.exports = {
       )
     .addSeparatorComponents(
       new SeparatorBuilder()
-      .setDivider(false)
+      .setDivider(true)
       )
     .addMediaGalleryComponents(
       new MediaGalleryBuilder()
