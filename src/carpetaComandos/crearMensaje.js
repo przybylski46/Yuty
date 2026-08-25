@@ -52,7 +52,6 @@ module.exports = {
     .addComponents(
       new ButtonBuilder()
       .setCustomId('constructor_vista_previa')
-      .setLabel('Vista previa')
       .setEmoji('👁️')
       .setStyle(ButtonStyle.Primary),
       new ButtonBuilder()
@@ -61,12 +60,10 @@ module.exports = {
       .setStyle(ButtonStyle.Secondary),
       new ButtonBuilder()
       .setCustomId('constructor_exportar')
-      .setLabel('Exportar')
       .setEmoji('📄')
       .setStyle(ButtonStyle.Secondary),
       new ButtonBuilder()
       .setCustomId('constructor_cancelar')
-      .setLabel('Cancelar')
       .setEmoji('🚽')
       .setStyle(ButtonStyle.Danger)
       );
