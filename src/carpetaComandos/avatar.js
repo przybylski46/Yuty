@@ -29,13 +29,20 @@ module.exports = {
   .setDescription('Muestra el avatar de un usuario')
   .addUserOption(opcion =>
     opcion
-                 .setName('usuario')
-                 .setDescription('El usuario cuyo avatar quieres ver')
-                 .setRequired(false)
-                 ),
-
+    .setName('usuario')
+    .setDescription('El usuario cuyo avatar quieres ver')
+    .setRequired(false)
+    )
+  .addBooleanOption(opcion =>
+    opcion
+    .setName('ephemeral')
+    .setDescription('Haz que el comando solo sea visible para tí')
+    .setRequired(false)
+    ),
+  
   async execute(interaction) {
     const usuario = interaction.options.getUser('usuario') || interaction.user;
+    const ephemeral = interaction.options.getBoolean('ephemeral') ?? false;
     const descripcion = descripciones[Math.floor(Math.random() * descripciones.length)];
     const avatar = usuario.displayAvatarURL({
       extension: 'webp',
@@ -94,7 +101,8 @@ module.exports = {
 
   await interaction.reply({
     flags: 32768,
-    components: [contenedor]
+    components: [contenedor],
+    ephemeral: ephemeral
   });
   }
 };
