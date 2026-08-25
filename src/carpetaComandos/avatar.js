@@ -99,10 +99,14 @@ module.exports = {
         )
       );
 
+    const ephemeral = interaction.options.getBoolean('ephemeral') ?? false;
+    const flags = ephemeral
+      ? 327668 | 64
+      : 32768;
+    
   await interaction.reply({
-    flags: 32768,
-    components: [contenedor],
-    ephemeral: ephemeral
+    flags,
+    components: [contenedor]
   });
   }
 };
