@@ -40,11 +40,40 @@ module.exports = {
       .setLabel('Contenedor')
       .setValue('contenedor')
       .setEmoji('📦'),
-      new
+      new StringSelectMenuOptionBuilder()
+      .setLabel('Botones')
+      .setValue('botones')
+      .setEmoji('🖱️')
+      );
+
+    const filaMenu = new ActionRowBuilder()
+    .addComponents(menu);
+    const filaBotones = new ActionRowBuilder()
+    .addComponents(
+      new ButtonBuilder()
+      .setCustomId('constructor_vista_previa')
+      .setLabel('Vista previa')
+      .setEmoji('👁️')
+      .setStyle(ButtonStyle.Primary),
+      new ButtonBuilder()
+      .setCustomId('constructor_exportar')
+      .setLabel('Exportar')
+      .setEmoji('📄')
+      .setStyle(ButtonStyle.Secondary),
+      new ButtonBuilder()
+      .setCustomId('constructor_cancelar')
+      .setLabel('Cancelar')
+      .setEmoji('🚽')
+      .setStyle(ButtonStyle.Danger)
+      );
     
     await interaction.reply({
-      content: '🛠️ Constructor abierto',
-      ephemeral: true
+      flags: 32768,
+      components: [
+        contenedor,
+        filaMenu,
+        filaBotones
+        ]
     });
   }
 };
