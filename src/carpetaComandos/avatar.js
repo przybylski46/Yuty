@@ -42,6 +42,15 @@ module.exports = {
   
   async execute(interaction) {
     const usuario = interaction.options.getUser('usuario') || interaction.user;
+
+    let nombre;
+
+    if (interaction.guild {
+      const miembro = await interaction.guild.members.fetch(usuario.id);
+      nombre = miembro.displayName;
+    } else {
+      nombre = usuario.globalName || usuario.username;
+    }
     const ephemeral = interaction.options.getBoolean('ephemeral') ?? false;
     const descripcion = descripciones[Math.floor(Math.random() * descripciones.length)];
     const avatar = usuario.displayAvatarURL({
@@ -64,15 +73,15 @@ module.exports = {
     .setAccentColor(8237567)
     .addTextDisplayComponents(
       new TextDisplayBuilder()
-      .setContent(`## Avatar de ${usuario.username}`)
-      )
-    .addTextDisplayComponents(
-      new TextDisplayBuilder()
-      .setContent(`> ${descripcion}`)
+      .setContent(`## Avatar de ${miembro.displayName}`)
       )
     .addSeparatorComponents(
       new SeparatorBuilder()
       .setDivider(true)
+      )
+    .addTextDisplayComponents(
+      new TextDisplayBuilder()
+      .setContent(`> ${descripcion}`)
       )
     .addMediaGalleryComponents(
       new MediaGalleryBuilder()
