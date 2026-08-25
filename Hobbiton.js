@@ -32,9 +32,9 @@ for(const archivo of archivosEventos)
         const evento = require(rutaArchivo);
 
         if (evento.unaVez) {
-            cliente.once(evento.nombre, ( . . .argumentos) => evento.ejecutar( . . .argumentos));
+            cliente.once(evento.nombre, (...argumentos) => evento.ejecutar(...argumentos));
         } else {
-            cliente.on(evento.nombre, ( . . .argumentos) => evento.ejecutar( . . .argumentos));
+            cliente.on(evento.nombre, (...argumentos) => evento.ejecutar(...argumentos));
         }
     }
 
