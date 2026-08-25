@@ -56,6 +56,10 @@ module.exports = {
       .setEmoji('👁️')
       .setStyle(ButtonStyle.Primary),
       new ButtonBuilder()
+      .setCustomId('Editar')
+      .setEmoji('✏️')
+      .setStyle(ButtonStyle.Secondary),
+      new ButtonBuilder()
       .setCustomId('constructor_exportar')
       .setLabel('Exportar')
       .setEmoji('📄')
