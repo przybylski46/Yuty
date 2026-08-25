@@ -5,10 +5,9 @@ function crearConstructor(userId) {
     flags: 32768,
     components: []
   };
-
-constructores.set(userId, estado);
-
-return estado;
+  
+  constructores.set(userId, estado);
+  return estado;
 }
 
 function obtenerConstructor(userId) {
@@ -17,6 +16,7 @@ function obtenerConstructor(userId) {
 
 function eliminarConstructor(userId) {
   constructores.delete(userId);
+}
 
 module.exports = {
   crearConstructor,
