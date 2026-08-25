@@ -103,7 +103,7 @@ module.exports = {
         .setStyle(ButtonStyle.Link)
         .setURL(jpg),
         new ButtonBuilder()
-        .setLabel('WebP')
+        .setLabel('WEBP')
         .setStyle(ButtonStyle.Link)
         .setURL(webp)
         )
