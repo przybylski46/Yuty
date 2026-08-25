@@ -27,6 +27,7 @@ module.exports = {
   data: new SlashCommandBuilder()
   .setName('avatar')
   .setDescription('Muestra el avatar de un usuario')
+  .setContexts(0, 1, 2)
   .addUserOption(opcion =>
     opcion
     .setName('usuario')
