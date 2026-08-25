@@ -28,7 +28,7 @@ const archivosEventos = fs.readdirSync(rutaEventos).filter(archivo => archivo.en
 
 for(const archivo of archivosEventos)
     {
-        const rutaArchivo = path.join(rutaEventos, Archivo);
+        const rutaArchivo = path.join(rutaEventos, archivo);
         const evento = require(rutaArchivo);
 
         if (evento.unaVez) {
