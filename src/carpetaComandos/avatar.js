@@ -45,7 +45,7 @@ module.exports = {
 
     let nombre;
 
-    if (interaction.guild {
+    if (interaction.guild) {
       const miembro = await interaction.guild.members.fetch(usuario.id);
       nombre = miembro.displayName;
     } else {
@@ -73,7 +73,7 @@ module.exports = {
     .setAccentColor(8237567)
     .addTextDisplayComponents(
       new TextDisplayBuilder()
-      .setContent(`## Avatar de ${miembro.displayName}`)
+      .setContent(`## Avatar de ${nombre}`)
       )
     .addSeparatorComponents(
       new SeparatorBuilder()
