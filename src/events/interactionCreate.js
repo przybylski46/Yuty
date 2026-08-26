@@ -22,7 +22,7 @@ module.exports = {
             }
             ////// Menú //////
             if (interaction.isStringSelectMenu()) {
-                if (interaction.customId === 'constructor_añadir') {
+                if (interaction.customId === 'constructor_add') {
                     const opcion = interaction.values[0];
                     const estado = obtenerConstructor(interaction.user.id);
 
