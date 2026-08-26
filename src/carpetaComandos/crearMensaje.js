@@ -33,7 +33,7 @@ module.exports = {
       );
 
     const menu = new StringSelectMenuBuilder()
-    .setCustomId('constructor_añadir')
+    .setCustomId('constructor_add')
     .setPlaceholder('Añadir componente')
     .addOptions(
       new StringSelectMenuOptionBuilder()
