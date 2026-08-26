@@ -18,6 +18,15 @@ module.exports = {
             }
             ////// Menú //////
             if (interaction.isStringSelectMenu()) {
+                if (interaction.customId === 'constructor_añadir') {
+                    const opcion = interaction.values[0];
+
+                    if (opcion === 'contenedor');
+                    if (opcion === 'botones');
+                    await interaction.reply({
+                        content: `Seleccionaste ${opcion}`,
+                        ephemeral: true
+                    });
                 return;
             }
         } catch (error) {
