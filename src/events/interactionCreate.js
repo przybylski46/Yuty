@@ -24,7 +24,7 @@ module.exports = {
                     if (opcion === 'contenedor');
                     if (opcion === 'botones');
                     await interaction.reply({
-                        content: `Seleccionaste ${opcion}`,
+                        content: `Seleccionaste **${opcion}**`,
                         ephemeral: true
                     });
                     return;
