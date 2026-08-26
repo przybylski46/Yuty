@@ -1,3 +1,7 @@
+const {
+    obtenerConstructor
+} = require('../constructor/estado');
+
 module.exports = {
     nombre: 'interactionCreate',
     unaVez: false,
@@ -20,14 +24,36 @@ module.exports = {
             if (interaction.isStringSelectMenu()) {
                 if (interaction.customId === 'constructor_añadir') {
                     const opcion = interaction.values[0];
+                    const estado = obtenerConstructor(interaction.user.id);
 
-                    if (opcion === 'contenedor');
-                    if (opcion === 'botones');
-                    await interaction.reply({
-                        content: `Seleccionaste **${opcion}**`,
-                        ephemeral: true
-                    });
-                    return;
+                    if (!estado) {
+                        await interaction.reply({
+                            content: 'No tienes un constructor activo',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+
+                    if (opcion === 'contenedor') {
+                        estado.components.push({
+                            type: 17,
+                            components: [],
+                            accent_color: 8237567
+                        });
+                        await interaction.reply({
+                            content: '📦 Contenedor creado',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+                    
+                    if (opcion === 'botones') {
+                        await interaction.reply({
+                            content: 'Aún no',
+                            ephemeral: true
+                        });
+                        return;
+                    }
                 }
             }
         } catch (error) {
