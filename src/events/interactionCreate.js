@@ -27,7 +27,8 @@ module.exports = {
                         content: `Seleccionaste ${opcion}`,
                         ephemeral: true
                     });
-                return;
+                    return;
+                }
             }
         } catch (error) {
             console.error(error);
