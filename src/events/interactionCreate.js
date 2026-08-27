@@ -1,12 +1,6 @@
-const {
-    obtenerConstructor
-} = require('../constructor/estado');
-const {
-    crearInterfaz
-} = require('../constructor/interfaz');
-const {
-    crearVistaPrevia
-} = require('../constructor/vistaPrevia');
+const { obtenerConstructor } = require('../constructor/estado');
+const { crearInterfaz } = require('../constructor/interfaz');
+const { crearVistaPrevia } = require('../constructor/vistaPrevia');
 
 module.exports = {
     nombre: 'interactionCreate',
