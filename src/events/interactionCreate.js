@@ -4,6 +4,9 @@ const {
 const {
     crearInterfaz
 } = require('../constructor/interfaz');
+const {
+    crearVistaPrevia
+} = require('../constructor/vistaPrevia');
 
 module.exports = {
     nombre: 'interactionCreate',
@@ -33,7 +36,8 @@ module.exports = {
                     }
 
                     await interaction.reply({
-                        content: '👁️',
+                        flags: 32768,
+                        components: crearVistaPrevia(estado),
                         ephemeral: true
                     });
                     return;
