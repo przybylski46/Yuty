@@ -1,6 +1,9 @@
 const {
     obtenerConstructor
 } = require('../constructor/estado');
+const {
+    crearInterfaz
+} = require('../constructor/interfaz');
 
 module.exports = {
     nombre: 'interactionCreate',
@@ -40,9 +43,8 @@ module.exports = {
                             components: [],
                             accent_color: 8237567
                         });
-                        await interaction.reply({
-                            content: '📦 Contenedor creado',
-                            ephemeral: true
+                        await interaction.update({
+                            components: crearInterfaz(estado)
                         });
                         return;
                     }
