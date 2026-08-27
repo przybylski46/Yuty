@@ -21,6 +21,23 @@ module.exports = {
             }
             ////// Botones //////
             if (interaction.isButton()) {
+                if (interaction.customId === 'constructor_vista_previa') {
+                    const estado = obtenerConstructor(interaction.user.id);
+
+                    if (!estado) {
+                        await interaction.reply({
+                            content: 'No tienes un constructor activo',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+
+                    await interaction.reply({
+                        content: '👁️',
+                        ephemeral: true
+                    });
+                    return;
+                }
                 return;
             }
             ////// Menú //////
