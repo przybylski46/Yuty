@@ -36,6 +36,35 @@ module.exports = {
                     });
                     return;
                 }
+                if (interaction.customId.startsWith('constructor_editar_contenedor_')) {
+                    const indice = Number(
+                        interaction.customId.replace(
+                            'constructor_editar_contenedor_',
+                            ''
+                            )
+                        );
+                    const estado = obtenerConstructor(interaction.user.id);
+                    if (!estado) {
+                        await interaction.reply({
+                            content: 'No tienes un constructor activo',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+                    const contenedor = estado.components[indice];
+                    if (!contenedor || contenedor.type !== 17) {
+                        await interaction.reply({
+                            content: 'Ese contenedor ya no existe',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+                    await interaction.reply({
+                        content: `✏️ Editando contenedor #${indice + 1}`,
+                        ephemeral: true
+                    });
+                    return;
+                }
                 return;
             }
             ////// Menú //////
