@@ -37,9 +37,19 @@ for (let i = 0; i < estado.components.length; i++) {
         '> Contenedor vacío'
         )
       );
+
+    const botonesContenedor = new ActionRowBuilder()
+    .addComponents(
+      new ButtonBuilder()
+      .setCustomId(`constructor_editar_contenedor_${i}`)
+      .setEmoji('✏️')
+      .setStyle(ButtonStyle.Secondary)
+      );
     componentes.push(contenedor);
+    componentes.push(botonesContenedor);
   }
 }
+
 
 ////// Menú añadir componentes //////
 const menu = new StringSelectMenuBuilder()
