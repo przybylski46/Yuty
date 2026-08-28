@@ -16,7 +16,7 @@ function crearEditorContenedor(indice, contenedor) {
   .setAccentColor(contenedor.accent_color)
   .addTextDisplayComponents(
     new TextDisplayBuilder()
-    .setContent( `✏️ Editando contenedor #${indice + 1}` )
+    .setContent( `### -# Editando contenedor ${indice + 1}...` )
     );
   
   componentes.push(encabezado);
