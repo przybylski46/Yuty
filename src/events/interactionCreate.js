@@ -1,6 +1,7 @@
 const { obtenerConstructor } = require('../constructor/estado');
 const { crearInterfaz } = require('../constructor/interfaz');
 const { crearVistaPrevia } = require('../constructor/vistaPrevia');
+const { crearEditorContenedor } = require('../constructor/editorContenedor');
 
 module.exports = {
     nombre: 'interactionCreate',
@@ -59,9 +60,8 @@ module.exports = {
                         });
                         return;
                     }
-                    await interaction.reply({
-                        content: `✏️ Editando contenedor #${indice + 1}`,
-                        ephemeral: true
+                    await interaction.update({
+                        components: crearEditorContenedor(indice, contenedor)
                     });
                     return;
                 }
