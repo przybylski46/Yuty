@@ -152,7 +152,8 @@ module.exports = {
                         return;
                     }
                 }
-            } catch (error) {
+            }
+        } catch (error) {
             console.error(error);
             
             if (interaction.replied || interaction.deferred) {
