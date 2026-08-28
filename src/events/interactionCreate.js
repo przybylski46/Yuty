@@ -101,8 +101,58 @@ module.exports = {
                         return;
                     }
                 }
-            }
-        } catch (error) {
+                if (interaction.customId.startsWith('constructor_contenedor_add_')) {
+                    const indice = Number(
+                        interaction.customId.replace(
+                            'constructor_contenedor_add_',
+                            ''
+                            )
+                        );
+                    const opcion = interaction.values[0];
+                    const estado = obtenerConstructor(interaction.user.id);
+
+                    if (!estado) {
+                        await interaction.reply({
+                            content: '### -# No tienes un constructor activo 🤨',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+
+                    const contenedor= estado.components[indice];
+                    
+                    if (!contenedor || contenedor.type !== 17) {
+                        await interaction.reply({
+                            content: '### -# Ese contenedor ya no existe 😓',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+                    
+                    if (opcion === 'texto') {
+                        await interaction.reply({
+                            content: '### -# 📝🦖 Escribamos algo...',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+
+                    if (opcion === 'media') {
+                        await interaction.reply ({
+                            content: '### -# 🖼️ Aún no',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+                    if (opcion === 'separador') {
+                        await interaction.reply ({
+                            content: '### -# ➖ Aún no',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+                }
+            } catch (error) {
             console.error(error);
             
             if (interaction.replied || interaction.deferred) {
