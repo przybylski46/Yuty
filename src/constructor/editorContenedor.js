@@ -21,6 +21,23 @@ function crearEditorContenedor(indice, contenedor) {
   
   componentes.push(encabezado);
 
+  for (let i = 0; i < contenedor.components.length; i++) {
+
+    const componente = contenedor.components[i];
+
+    if (componente.type === 10) {
+      const texto = new ContainerBuilder()
+      .addTextDisplayComponents(
+        new TextDisplayBuilder()
+        .setContent(
+          '### 🔘 Texto ${i + 1}\n' +
+          componente.content
+          )
+        );
+      componentes.push(texto);
+    }
+  }
+
   ////// Menu añadir en contenedor //////
   const menu = new StringSelectMenuBuilder()
   .setCustomId(`constructor_contenedor_add_${indice}`)
