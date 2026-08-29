@@ -2,6 +2,7 @@ const { obtenerConstructor } = require('../constructor/estado');
 const { crearInterfaz } = require('../constructor/interfaz');
 const { crearVistaPrevia } = require('../constructor/vistaPrevia');
 const { crearEditorContenedor } = require('../constructor/editorContenedor');
+const { crearModalTexto } = require('../constructor/modals/texto');
 
 module.exports = {
     nombre: 'interactionCreate',
@@ -130,10 +131,9 @@ module.exports = {
                     }
                     
                     if (opcion === 'texto') {
-                        await interaction.reply({
-                            content: '### -# 📝🦖 Escribamos algo...',
-                            ephemeral: true
-                        });
+                        await interaction.showModal(
+                            crearModalTexto(indice)
+                            );
                         return;
                     }
 
