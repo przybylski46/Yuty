@@ -3,7 +3,7 @@ const {
   TextInputBuilder,
   TextInputStyle,
   ActionRowBuilder
-} require('discord.js');
+} = require('discord.js');
 
 function crearModalTexto(indice) {
   
