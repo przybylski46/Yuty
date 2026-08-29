@@ -30,7 +30,7 @@ function crearEditorContenedor(indice, contenedor) {
       .addTextDisplayComponents(
         new TextDisplayBuilder()
         .setContent(
-          '### 🔘 Texto ${i + 1}\n' +
+          `### 🔘 Texto ${i + 1}\n` +
           componente.content
           )
         );
