@@ -153,6 +153,48 @@ module.exports = {
                     }
                 }
             }
+            if (interaction.isModalSubmit()) {
+                if(interaction.customId.startsWith('constructor_texto_')) {
+
+                    const indice = Number(
+                        interaction.customId.replace(
+                            'constructor_texto_',
+                            ''
+                            )
+                        );
+                    const estado = obtenerConstructor(interaction.user.id);
+                    
+                    if (!estado) {
+                        await interaction.reply({
+                            content: 'No tienes un constructor activo',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+
+                    const contenedor = estado.components[indice];
+
+                    if (!contenedor || contenedor.type !== 17) {
+                        await interaction.reply({
+                            content: 'Ese contenedor ya no existe',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+
+                    const contenido= interaction.fields.getTextInputValue('contenido');
+
+                    contenedor.components.push({
+                        type: 10,
+                        content: contenido
+                    });
+                    await interaction.reply({
+                        content: '✅ Texto añadido',
+                        ephemeral: true
+                    });
+                    return;
+                }
+            }
         } catch (error) {
             console.error(error);
             
