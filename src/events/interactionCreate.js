@@ -11,14 +11,14 @@ module.exports = {
     async ejecutar(interaction) {
         
         try {
-            ////// Comandos Slash //////
+            // 🚫🚫🚫🚫🚫🚫🚫🚫 Comandos Slash 🚫🚫🚫🚫🚫🚫🚫🚫
             if (interaction.isChatInputCommand()) {
                 const comando = interaction.client.comandos.get(interaction.commandName);
                 if (!comando) return;
                 await comando.execute(interaction);
                 return;
             }
-            ////// Botones //////
+            // 🚫🚫🚫🚫🚫🚫🚫🚫 Botones 🚫🚫🚫🚫🚫🚫🚫🚫
             if (interaction.isButton()) {
                 if (interaction.customId === 'constructor_vista_previa') {
                     const estado = obtenerConstructor(interaction.user.id);
@@ -68,7 +68,8 @@ module.exports = {
                 }
                 return;
             }
-            ////// Menú //////
+            // 🚫🚫🚫🚫🚫🚫🚫🚫 Menú 🚫🚫🚫🚫🚫🚫🚫🚫
+            
             if (interaction.isStringSelectMenu()) {
                 if (interaction.customId === 'constructor_add') {
                     const opcion = interaction.values[0];
@@ -153,6 +154,9 @@ module.exports = {
                     }
                 }
             }
+
+            // 🚫🚫🚫🚫🚫🚫🚫🚫 MODALS 🚫🚫🚫🚫🚫🚫🚫🚫
+            
             if (interaction.isModalSubmit()) {
                 if(interaction.customId.startsWith('constructor_texto_')) {
 
@@ -188,10 +192,10 @@ module.exports = {
                         type: 10,
                         content: contenido
                     });
-                    await interaction.reply({
-                        content: '✅ Texto añadido',
-                        ephemeral: true
+                    await interaction.update({
+                        components: crearEditorContenedor(indice, contenedor)
                     });
+                    
                     return;
                 }
             }
