@@ -66,7 +66,52 @@ module.exports = {
                     });
                     return;
                 }
+                if (interaction.customId.startsWith('constructor_texto_eliminar_')) {
+                    const partes = interaction.customId
+                    .replace('constructor_texto_eliminar_', '')
+                    .split('_');
+                    const indiceContenedor = Number(partes[0]);
+                    const indiceTexto = Number(partes[1]);
+
+                    const estado = obtenerConstructor(interaction.user.id);
+
+                    if (!estado) {
+                        await interaction.reply({
+                            content: 'No tienes un constructor activo',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+                    if (
+                        !contenedor.components[indiceTexto] ||
+                        contenedor.comñonents[indiceTexto].type !== 10
+                        ) {
+                        await interaction.reply({
+                            content: 'Ese texto ya no existe',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+                    contenedor.components.splice(indiceTexto, 1);
+
+                    await interaction.update({
+                        components: crearEditorContenedor(
+                            indiceContenedor, contenedor )
+                    });
+                        return;
+                }
+            
+                    const comtenedor = estado.components[indiceContenedor];
+
+                    if (!contenedor || contenedor.type !== 17) {
+                        await interaction.reply ({
+                            content: 'El contenedor ya no existe',
+                            ephemeral: true
+                        });
+                        
                 return;
+                    }
+                    
             }
             // 🚫🚫🚫🚫🚫🚫🚫🚫 Menú 🚫🚫🚫🚫🚫🚫🚫🚫
             
