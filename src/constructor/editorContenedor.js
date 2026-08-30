@@ -34,7 +34,23 @@ function crearEditorContenedor(indice, contenedor) {
           componente.content
           )
         );
+      const botonesTexto = new ActionRowBuilder()
+      .addComponents(
+        new ButtonBuilder()
+        .setCustomId(
+          `constructor_texto_editar_${indice}_${i}`
+          )
+        .setEmoji('✏️')
+        .setStyle(ButtonStyle.Secondary),
+        new ButtonBuilder()
+        .setCustomId(
+          `constructor_texto_eliminar_${indice}_${i}`
+          )
+        .setEmoji('🗑️')
+        .setStyle(ButtonStyle.Danger)
+        );
       componentes.push(texto);
+      componentes.push(botonesTexto);
     }
   }
 
