@@ -82,9 +82,12 @@ module.exports = {
                         });
                         return;
                     }
+
+                    const contenedor = estado.components[indiceContenedor];
+                    
                     if (
                         !contenedor.components[indiceTexto] ||
-                        contenedor.comñonents[indiceTexto].type !== 10
+                        contenedor.components[indiceTexto].type !== 10
                         ) {
                         await interaction.reply({
                             content: 'Ese texto ya no existe',
@@ -92,16 +95,17 @@ module.exports = {
                         });
                         return;
                     }
+                    
                     contenedor.components.splice(indiceTexto, 1);
 
                     await interaction.update({
                         components: crearEditorContenedor(
-                            indiceContenedor, contenedor )
+                            indiceContenedor,
+                            contenedor )
                     });
                         return;
                 }
-            
-                    const comtenedor = estado.components[indiceContenedor];
+
 
                     if (!contenedor || contenedor.type !== 17) {
                         await interaction.reply ({
