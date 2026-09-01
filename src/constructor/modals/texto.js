@@ -5,18 +5,29 @@ const {
   ActionRowBuilder
 } = require('discord.js');
 
-function crearModalTexto(indice) {
-  
+function crearModalTexto(indice, indiceTexto = null, contenidoActual = '') {
+
+  const editar = indiceTexto !== null;
+    
   const modal = new ModalBuilder()
-  .setCustomId(`constructor_texto_${indice}`)
-  .setTitle('📝 Añadir texto');
+    .setCustomId(
+      editar
+      ? `constructor_texto_editar_${indice}_${indiceTexto}`
+      : `constructor_texto_${indice}`
+  )
+    .setTitle(
+      editar
+      ? '✏️ Editar texto'
+      : '📝 Añadir texto'
+      );
   
   const texto= new TextInputBuilder()
   .setCustomId('contenido')
   .setLabel('Contenido')
   .setPlaceholder('Escribe sin hacer ruido para no despertar al Spinosaurus...')
   .setStyle(TextInputStyle.Paragraph)
-  .setRequired(true);
+  .setRequired(true)
+  .setValue(contenidoActual);
   
   const fila = new ActionRowBuilder()
   .addComponents(texto);
