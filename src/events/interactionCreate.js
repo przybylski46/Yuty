@@ -66,6 +66,49 @@ module.exports = {
                     });
                     return;
                 }
+
+                if (interaction.customId.startsWith('constructor_texto_editar_')) {
+                    const partes = interaction.customId
+                    .replace('constructor_texto_editar_', '')
+                    .split('_');
+                    const indiceContenedor = Number(partes[0]);
+                    const indiceTexto = Number(partes[1]);
+
+                    const estado = obtenerConstructor(interaction.user.id);
+
+                    if (!estado) {
+                        await interaction.reply({
+                            content: 'No tienes un constructor activo',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+                    const contenedor = estado.components[indiceContenedor];
+                    if (!contenedor || contenedor.type !== 17) {
+                        await interaction.reply({
+                            content: 'El contenedor ya no existe',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+                    const componente = contenedor.components[indiceTexto];
+                    if (!componente || componente.type !== 10) {
+                        await interaction.reply({
+                            content: 'Ese bloque de texto ya no existe',
+                            ephemeral: true
+                        });
+                        return;
+                    }
+                    await interaction.showModal(
+                        crearModalTexto(
+                            indiceContenedor,
+                            indiceTexto,
+                            componente.content
+                            )
+                        );
+                    return;
+                }
+                
                 if (interaction.customId.startsWith('constructor_texto_eliminar_')) {
                     const partes = interaction.customId
                     .replace('constructor_texto_eliminar_', '')
@@ -84,6 +127,14 @@ module.exports = {
                     }
 
                     const contenedor = estado.components[indiceContenedor];
+
+                    if (!contenedor || contenedor.type !== 17) {
+                        await interaction.reply({
+                            content: 'El contenedor ya no existe',
+                            ephemeral: true
+                        });
+                        return;
+                    }
                     
                     if (
                         !contenedor.components[indiceTexto] ||
@@ -105,17 +156,6 @@ module.exports = {
                     });
                         return;
                 }
-
-
-                    if (!contenedor || contenedor.type !== 17) {
-                        await interaction.reply ({
-                            content: 'El contenedor ya no existe',
-                            ephemeral: true
-                        });
-                        
-                return;
-                    }
-                    
             }
             // 🚫🚫🚫🚫🚫🚫🚫🚫 Menú 🚫🚫🚫🚫🚫🚫🚫🚫
             
@@ -207,7 +247,9 @@ module.exports = {
             // 🚫🚫🚫🚫🚫🚫🚫🚫 MODALS 🚫🚫🚫🚫🚫🚫🚫🚫
             
             if (interaction.isModalSubmit()) {
-                if(interaction.customId.startsWith('constructor_texto_')) {
+                if(
+                    interaction.customId.startsWith('constructor_texto_') &&
+                    ! interaction.customId.startsWith('constructor_texto_editar_')) {
 
                     const indice = Number(
                         interaction.customId.replace(
@@ -247,6 +289,52 @@ module.exports = {
                     
                     return;
                 }
+
+            if (interaction.customId.startsWith('constructor_texto_editar_')) {
+                const partes = interaction.customId
+                .replace('constructor_texto_editar_', '')
+                .split('_');
+                const indiceContenedor = Number(partes[0]);
+                const indiceTexto = Number(partes[1]);
+                const estado = obtenerConstructor(interaction.user.id);
+
+                if (!estado) {
+                    await interaction.reply({
+                        content: 'No tienes un constructor activo',
+                        ephemeral: true
+                    });
+                    return;
+                }
+                const contenedor = estado.components[indiceContenedor];
+
+                if (!contenedor || contenedor.type !== 17) {
+                    await interaction.reply({
+                        content: 'El contenedor ya no existe',
+                        ephemeral: true
+                    });
+                    return;
+                }
+                const componente = contenedor.components[indiceTexto];
+
+                if (!componente || componente.type !== 10) {
+                    await interaction.reply({
+                        content: 'Ese texto ya no existe',
+                        ephemeral: true
+                    });
+                    return;
+                }
+
+                const contenido = interaction.fields.getTextInputValue('contenido');
+                componente.content = contenido;
+
+                await interaction.update({
+                    components: crearEditorContenedor(
+                        indiceContenedor,
+                        contenedor
+                        )
+                });
+                return;
+            }
             }
         } catch (error) {
             console.error(error);
