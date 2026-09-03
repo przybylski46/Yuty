@@ -1,12 +1,17 @@
 require('dotenv').config();
 
 const { REST, Routes } = require('discord.js');
+
 const fs = require('node:fs');
+
 const path = require('node:path');
+
+const ID_SERVIDOR_REGALO = '1541553721505357876';
 
 const comandos = [];
 
 const rutaComandos = path.join(__dirname, 'carpetaComandos');
+
 const archivosComandos = fs.readdirSync(rutaComandos).filter(archivo => archivo.endsWith('.js'));
 
 for (const archivo of archivosComandos) {
