@@ -2,12 +2,14 @@ const { SlashCommandBuilder } = require('discord.js');
 const { crearRegalo } = require('../regalo/estado');
 const { crearInterfazRegalo } = require('../regalo/interfaz');
 
-const ID_PERSONA_REGALO = '880352642700812308';
+const ID_PERSONA_REGALO = 'PON_AQUI_EL_ID_DE_LA_PERSONA';
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('regalo')
-        .setDescription('Hay una pequeña sorpresa para ti...'),
+        .setDescription('💕'),
+
+    guildOnly: true,
 
     async execute(interaction) {
 
