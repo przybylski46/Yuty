@@ -1,24 +1,28 @@
 const { SlashCommandBuilder } = require('discord.js');
+const { crearRegalo } = require('../regalo/estado');
+const { crearInterfazRegalo } = require('../regalo/interfaz');
 
-const ID_REGALO = '880352642700812308';
+const ID_PERSONA_REGALO = '880352642700812308';
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('regalo')
         .setDescription('Hay una pequeña sorpresa para ti...'),
-    
+
     async execute(interaction) {
-        if (interaction.user.id !== ID_REGALO) {
-            await interaction.reply({
-                content: 'Este regalo no es para ti 👀',
+
+        if (interaction.user.id !== ID_PERSONA_REGALO) {
+            return interaction.reply({
+                content: '❌',
                 ephemeral: true
             });
-            return;
         }
-        
+
+        const estado = crearRegalo();
+
         await interaction.reply({
-            content: '🌿 **Día 1 de 7**\n\nHay una pequeña sorpresa para ti...',
-            ephemeral: true
+            flags: 32768,
+            components: crearInterfazRegalo(estado)
         });
     }
 };
